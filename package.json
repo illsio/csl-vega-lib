@@ -1,0 +1,18 @@
+{
+  "name": "csl-vega-lib",
+  "version": "0.0.1",
+  "description": "JavaScript Library",
+  "license": "MIT",
+  "author": "illsio",
+  "dependencies": {
+    "@angular/common": "~7.2.0",
+    "@angular/core": "~7.2.0",
+    "@types/xml2js": "^0.4.4",
+    "typescript": "^3.4.1",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "@types/jasmine": "~2.8.8"
+  },
+  "typings": "lib/index.d.ts"
+}

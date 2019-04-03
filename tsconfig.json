@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",                        /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
+    "module": "es2015",                     /* Specify module code generation: 'commonjs', 'amd', 'system', 'umd' or 'es2015'. */
+
+    "moduleResolution": "node",             /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "removeComments": false,                /* Do not emit comments to output. */
+    "sourceMap": true,                      /* Generates corresponding '.map' file. */
+    "outDir": "./build",                        /* Redirect output structure to the directory. */
+
+    "declaration": true,                    /* Generates corresponding '.d.ts' file. */
+    "noImplicitAny": false,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+
+    "stripInternal": true,
+    "inlineSources": false,                 /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
+
+    "strict": true,                         /* Enable all strict type-checking options. */
+
+    "lib": ["es5", "es2015", "dom", "scripthost"]
+  },
+
+  "include": [
+    "./components"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+
+}
