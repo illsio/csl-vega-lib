@@ -15,8 +15,6 @@ var DataLoaderService = /** @class */ (function () {
     function DataLoaderService(_http) {
         this._http = _http;
     }
-    DataLoaderService.prototype.ngOnInit = function () {
-    };
     /*
     *   Request data from
     */

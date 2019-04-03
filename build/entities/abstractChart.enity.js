@@ -6,7 +6,6 @@ var AbstractChartEnity = /** @class */ (function () {
         this._width = 0;
         this._height = 0;
         this._autoSize = 'fit';
-        this._data = null;
         this._colorScheme = "tableau20";
         this._countElementName = '';
         this._colorElementName = '';

@@ -7,7 +7,6 @@ export declare class AbstractChartEnity {
     private _colorScheme;
     private _countElementName;
     private _colorElementName;
-    constructor();
     createChart(): void;
     shema: string;
     width: number;

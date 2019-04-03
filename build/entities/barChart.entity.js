@@ -17,7 +17,7 @@ var abstractChart_enity_1 = require("./abstractChart.enity");
 var BarchartEntity = /** @class */ (function (_super) {
     __extends(BarchartEntity, _super);
     function BarchartEntity() {
-        return _super.call(this) || this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     BarchartEntity.prototype.createChart = function () {
         var barChart = {};
