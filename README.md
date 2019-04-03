@@ -1,4 +1,4 @@
-CSL Angular Highcharts Module
+CSL Vega Library
 ========
 
 Created 03.04.2019
