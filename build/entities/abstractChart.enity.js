@@ -1,5 +1,7 @@
-export class AbstractChartEnity {
-    constructor() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var AbstractChartEnity = /** @class */ (function () {
+    function AbstractChartEnity() {
         this._shema = 'https://vega.github.io/schema/vega/v3.0.json';
         this._width = 0;
         this._height = 0;
@@ -9,55 +11,89 @@ export class AbstractChartEnity {
         this._countElementName = '';
         this._colorElementName = '';
     }
-    createChart() {
-    }
-    get shema() {
-        return this._shema;
-    }
-    set shema(value) {
-        this._shema = value;
-    }
-    get width() {
-        return this._width;
-    }
-    set width(value) {
-        this._width = value;
-    }
-    get height() {
-        return this._height;
-    }
-    set height(value) {
-        this._height = value;
-    }
-    get autoSize() {
-        return this._autoSize;
-    }
-    set autoSize(value) {
-        this._autoSize = value;
-    }
-    get data() {
-        return this._data;
-    }
-    set data(value) {
-        this._data = value;
-    }
-    get countElementName() {
-        return this._countElementName;
-    }
-    set countElementName(value) {
-        this._countElementName = value;
-    }
-    get colorElementName() {
-        return this._colorElementName;
-    }
-    set colorElementName(value) {
-        this._colorElementName = value;
-    }
-    get colorScheme() {
-        return this._colorScheme;
-    }
-    set colorScheme(value) {
-        this._colorScheme = value;
-    }
-}
+    AbstractChartEnity.prototype.createChart = function () {
+    };
+    Object.defineProperty(AbstractChartEnity.prototype, "shema", {
+        get: function () {
+            return this._shema;
+        },
+        set: function (value) {
+            this._shema = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractChartEnity.prototype, "width", {
+        get: function () {
+            return this._width;
+        },
+        set: function (value) {
+            this._width = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractChartEnity.prototype, "height", {
+        get: function () {
+            return this._height;
+        },
+        set: function (value) {
+            this._height = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractChartEnity.prototype, "autoSize", {
+        get: function () {
+            return this._autoSize;
+        },
+        set: function (value) {
+            this._autoSize = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractChartEnity.prototype, "data", {
+        get: function () {
+            return this._data;
+        },
+        set: function (value) {
+            this._data = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractChartEnity.prototype, "countElementName", {
+        get: function () {
+            return this._countElementName;
+        },
+        set: function (value) {
+            this._countElementName = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractChartEnity.prototype, "colorElementName", {
+        get: function () {
+            return this._colorElementName;
+        },
+        set: function (value) {
+            this._colorElementName = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractChartEnity.prototype, "colorScheme", {
+        get: function () {
+            return this._colorScheme;
+        },
+        set: function (value) {
+            this._colorScheme = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return AbstractChartEnity;
+}());
+exports.AbstractChartEnity = AbstractChartEnity;
 //# sourceMappingURL=abstractChart.enity.js.map

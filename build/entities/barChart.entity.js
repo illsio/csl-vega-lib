@@ -1,10 +1,26 @@
-import { AbstractChartEnity } from "./abstractChart.enity";
-export class BarchartEntity extends AbstractChartEnity {
-    constructor() {
-        super();
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var abstractChart_enity_1 = require("./abstractChart.enity");
+var BarchartEntity = /** @class */ (function (_super) {
+    __extends(BarchartEntity, _super);
+    function BarchartEntity() {
+        return _super.call(this) || this;
     }
-    createChart() {
-        const barChart = {};
+    BarchartEntity.prototype.createChart = function () {
+        var barChart = {};
         barChart["$shema"] = this.shema ? this.shema : null;
         barChart["width"] = this.width ? this.width : 500;
         barChart["height"] = this.height ? this.height : 500;
@@ -14,8 +30,8 @@ export class BarchartEntity extends AbstractChartEnity {
         barChart["marks"] = this.createMarks();
         barChart["data"] = this.data;
         return barChart;
-    }
-    createData(values) {
+    };
+    BarchartEntity.prototype.createData = function (values) {
         this.data = [
             {
                 "name": "table",
@@ -35,8 +51,8 @@ export class BarchartEntity extends AbstractChartEnity {
                     }
                 ];
         }
-    }
-    createSignals() {
+    };
+    BarchartEntity.prototype.createSignals = function () {
         return [
             {
                 "name": "startAngle", "value": 0
@@ -60,8 +76,8 @@ export class BarchartEntity extends AbstractChartEnity {
                 "name": "dings", "value": this.colorElementName
             }
         ];
-    }
-    createScales() {
+    };
+    BarchartEntity.prototype.createScales = function () {
         return [
             {
                 "name": "color",
@@ -69,8 +85,8 @@ export class BarchartEntity extends AbstractChartEnity {
                 "range": { "scheme": this.colorScheme }
             }
         ];
-    }
-    createMarks() {
+    };
+    BarchartEntity.prototype.createMarks = function () {
         return [
             {
                 "type": "arc",
@@ -94,7 +110,7 @@ export class BarchartEntity extends AbstractChartEnity {
                 }
             }
         ];
-    }
+    };
     // Marks from previous chart
     /*{
        "name": "mark",
@@ -145,7 +161,7 @@ export class BarchartEntity extends AbstractChartEnity {
        }
      }*/
     // Deprecated???
-    setDefaultData() {
+    BarchartEntity.prototype.setDefaultData = function () {
         return [
             {
                 "name": "table",
@@ -288,6 +304,8 @@ export class BarchartEntity extends AbstractChartEnity {
                 ]
             }
         ];
-    }
-}
+    };
+    return BarchartEntity;
+}(abstractChart_enity_1.AbstractChartEnity));
+exports.BarchartEntity = BarchartEntity;
 //# sourceMappingURL=barChart.entity.js.map

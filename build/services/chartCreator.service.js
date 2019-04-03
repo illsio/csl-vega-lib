@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,28 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Injectable } from '@angular/core';
-import { BarchartEntity } from "../entities/barChart.entity";
-let ChartCreatorService = class ChartCreatorService {
-    constructor() {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var barChart_entity_1 = require("../entities/barChart.entity");
+var ChartCreatorService = /** @class */ (function () {
+    function ChartCreatorService() {
     }
-    ngOnInit() {
-    }
+    ChartCreatorService.prototype.ngOnInit = function () {
+    };
     //TODO: charttype enum
-    static createChart(chartType, chartData, countElementName) {
+    ChartCreatorService.createChart = function (chartType, chartData, countElementName) {
         if (chartType === 'barChart') {
-            const charBart = new BarchartEntity();
+            var charBart = new barChart_entity_1.BarchartEntity();
             charBart.countElementName = countElementName;
             charBart.colorElementName = countElementName;
             charBart.createData(chartData);
             // charBart.setDefaultData();
             return charBart.createChart();
         }
-    }
-};
-ChartCreatorService = __decorate([
-    Injectable(),
-    __metadata("design:paramtypes", [])
-], ChartCreatorService);
-export { ChartCreatorService };
+    };
+    ChartCreatorService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+    ], ChartCreatorService);
+    return ChartCreatorService;
+}());
+exports.ChartCreatorService = ChartCreatorService;
 //# sourceMappingURL=chartCreator.service.js.map
