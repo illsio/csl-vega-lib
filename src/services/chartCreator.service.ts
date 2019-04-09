@@ -2,7 +2,7 @@ import {BarchartEntity} from "../entities/barChart.entity";
 
 export class ChartCreatorService  {
 
-  //TODO: charttype enum
+  //TODO: charttype enum?
 
   public static createChart(chartType: string, chartData: Object, countElementName: string): any {
     if (chartType === 'barChart') {

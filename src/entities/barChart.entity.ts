@@ -1,4 +1,4 @@
-import {AbstractChartEnity} from "./abstractChart.enity";
+import {AbstractChartEnity} from './abstractChart.enity';
 
 export class BarchartEntity extends AbstractChartEnity {
 
@@ -95,7 +95,11 @@ export class BarchartEntity extends AbstractChartEnity {
             "outerRadius": {"signal": "width / 2"},
             "cornerRadius": {"signal": "cornerRadius"}
           },
-          "update": {"fill": {"scale": "color", "field": this.colorElementName}},
+          "update": {
+            "fill": {"scale": "color", "field": this.colorElementName},
+            "startAngle": {"field": "startAngle"},
+            "endAngle": {"field": "endAngle"}
+            },
           "hover": {"fill": {"value": "pink"}}
         }
       }
@@ -153,150 +157,4 @@ export class BarchartEntity extends AbstractChartEnity {
      }
    }*/
 
-
-  // Deprecated???
-  public setDefaultData() {
-    return [
-      {
-        "name": "table",
-        "values": [
-          {
-            "assigneeId": 1,
-            "assignee": "Samsung",
-            "ipcId": 1,
-            "ipcs": "Biocompatible crosslinked polymer preparation but with some new keywords as this is IPC number 11.",
-            "records": 28,
-            "strength": 87
-          },
-          {
-            "assigneeId": 1,
-            "assignee": "Samsung",
-            "ipcId": 2,
-            "ipcs": "New biocompatible polyhydroxyalkanoate -  having a controlled degradation rate of less  than one year under physiological conditions.",
-            "records": 58,
-            "strength": 77
-          },
-          {
-            "assigneeId": 1,
-            "assignee": "Samsung",
-            "ipcId": 3,
-            "ipcs": "Elastic substantially linear olefin polymers  with processability similar to high branched  LDPE but strength and toughness of LLDPE.",
-            "records": 34,
-            "strength": 24
-          },
-          {
-            "assigneeId": 1,
-            "assignee": "Samsung",
-            "ipcId": 4,
-            "ipcs": "Elastic substantially linear olefin polymers  with processability similar to high branched  LDPE but strength and toughness of LLDPE.",
-            "records": 89,
-            "strength": 111
-          },
-          {
-            "assigneeId": 1,
-            "assignee": "Samsung",
-            "ipcId": 5,
-            "ipcs": "Processability similar to high branched  LDPE but strength.",
-            "records": 55,
-            "strength": 78
-          },
-          {
-            "assigneeId": 2,
-            "assignee": "Sony",
-            "ipcId": 6,
-            "ipcs": "New biocompatible polyhydroxyalkanoate -  having a controlled degradation rate of less  than one year under physiological conditions.",
-            "records": 55,
-            "strength": 55
-          },
-          {
-            "assigneeId": 2,
-            "assignee": "Sony",
-            "ipcId": 7,
-            "ipcs": "Elastic substantially linear olefin polymers  with processability similar to high branched  LDPE but strength and toughness of LLDPE.",
-            "records": 43,
-            "strength": 43
-          },
-          {
-            "assigneeId": 3,
-            "assignee": "Motorola",
-            "ipcId": 8,
-            "ipcs": "Biocompatible crosslinked polymer  preparation by nucleophilic-electrophilic  group reaction between functional polymer  and crosslinking agent, useful e.g. for  preventing surgical adhesions or for drug  delivery.",
-            "records": 91,
-            "strength": 91
-          },
-          {
-            "assigneeId": 4,
-            "assignee": "Apple",
-            "ipcId": 9,
-            "ipcs": "Ethylene polymer, partic. substantially linear  ethylene polymer has melt flow ratio of at least  5.63, mol. wt. distribution of 1.5-2.5, greater  critical shear stress than similar polymers and  had improved processability.",
-            "records": 81,
-            "strength": 81
-          },
-          {
-            "assigneeId": 4,
-            "assignee": "Apple",
-            "ipcId": 10,
-            "ipcs": "Elastic substantially linear olefin polymers  with processability similar to high branched  LDPE but strength and toughness of LLDPE.",
-            "records": 53,
-            "strength": 53
-          },
-          {
-            "assigneeId": 4,
-            "assignee": "Apple",
-            "ipcId": 11,
-            "ipcs": "Processability similar to high branched  LDPE but strength.",
-            "records": 19,
-            "strength": 19
-          },
-          {
-            "assigneeId": 4,
-            "assignee": "Apple",
-            "ipcId": 12,
-            "ipcs": "Biocompatible crosslinked polymer  preparation",
-            "records": 87,
-            "strength": 28
-          },
-          {
-            "assigneeId": 2,
-            "assignee": "Sony",
-            "ipcId": 13,
-            "ipcs": "Biocompatible crosslinked polymer  preparation",
-            "records": 67,
-            "strength": 90
-          }
-        ]
-      },
-      {
-        "name": "data_group_sum",
-        "source": "table",
-        "transform": [
-          {
-            "type": "aggregate",
-            "groupby": ["assigneeId"],
-            "fields": ["records"],
-            "ops": ["sum"],
-            "as": ["records_total"]
-          }
-        ]
-      },
-      {
-        "name": "finalData",
-        "source": "table",
-        "transform": [
-          {
-            "type": "lookup",
-            "from": "data_group_sum",
-            "key": "assigneeId",
-            "values": ["records_total"],
-            "fields": ["assigneeId"]
-          },
-          {
-            "type": "pie",
-            "field": "assigneeId",
-            "sort": true
-          }
-        ]
-      }
-    ];
-  }
 }

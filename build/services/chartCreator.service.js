@@ -4,7 +4,7 @@ var barChart_entity_1 = require("../entities/barChart.entity");
 var ChartCreatorService = /** @class */ (function () {
     function ChartCreatorService() {
     }
-    //TODO: charttype enum
+    //TODO: charttype enum?
     ChartCreatorService.createChart = function (chartType, chartData, countElementName) {
         if (chartType === 'barChart') {
             var charBart = new barChart_entity_1.BarchartEntity();

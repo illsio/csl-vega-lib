@@ -1,11 +1,37 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var xml2js = require("xml2js/lib/xml2js");
-var WfsDataUtils = /** @class */ (function () {
-    function WfsDataUtils() {
+var DataRequestUtils = /** @class */ (function () {
+    function DataRequestUtils() {
+        /*
+        *   Extract data from a WFS without the necessity of displaying a map-component
+        */
+        // The baseNodes are needed when no clean JSON is returned by the WFS
         this.baseNodes = ['wfs:FeatureCollection', 'gml:featureMember'];
     }
-    WfsDataUtils.prototype.getPromise = function (data) {
+    DataRequestUtils.prototype.getDataObservable = function (url) {
+        return new Promise(function (resolve, reject) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resolve(xhr.response);
+                }
+                else {
+                    reject(xhr.statusText);
+                }
+            };
+            xhr.onerror = function () { return reject(xhr.statusText); };
+            xhr.send(null);
+        });
+        // In plain Angular we would simply do this
+        // return this._http.get(url)
+        //   .toPromise()
+        //   .then(data => {
+        //     return data;
+        //   });
+    };
+    DataRequestUtils.prototype.getPromise = function (data) {
         var parser = new xml2js.Parser();
         return new Promise(function (resolve, reject) {
             parser.parseString(data, function (err, result) {
@@ -13,11 +39,7 @@ var WfsDataUtils = /** @class */ (function () {
             });
         });
     };
-    /*
-    *   These methods extract data from a WFS without the necessity of displaying a map-component
-    *   Used in the wfs-dataload.component
-    */
-    WfsDataUtils.prototype.getDataFromWFSJson = function (wfsData, wfsTypename, properties, prefix) {
+    DataRequestUtils.prototype.getDataFromWFSJson = function (wfsData, wfsTypename, properties, prefix) {
         var newWfs = wfsData;
         for (var _i = 0, _a = this.baseNodes; _i < _a.length; _i++) {
             var baseNodes = _a[_i];
@@ -45,7 +67,7 @@ var WfsDataUtils = /** @class */ (function () {
         }
         return dataCollection;
     };
-    return WfsDataUtils;
+    return DataRequestUtils;
 }());
-exports.WfsDataUtils = WfsDataUtils;
-//# sourceMappingURL=wfs-data.utils.js.map
+exports.DataRequestUtils = DataRequestUtils;
+//# sourceMappingURL=data-request.utils.js.map
