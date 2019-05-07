@@ -8,6 +8,9 @@ Created 03.04.2019
 - It contains a utilities class for filtering and formatting data 
 - This Module is frontend agnostic - any standard JavaScript frontend should work with this library
 
+- Import by addind the following the package.json:
+    "csl-vega-lib": "git+ssh://git@github.com/illsio/csl-vega-lib.git#master",
+
 - NOTE: It is so far a showcase that is supposed to showcase how one library might be used in the CityScienceLab and in the context of the masterportal
 
 This could be a potential call to the Module from an Angular context:
