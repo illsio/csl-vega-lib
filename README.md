@@ -26,7 +26,7 @@ This could be a potential call to the Module from an Angular context:
       }
     );
     let wfsData = this.dataRequestUtils.getDataFromGeoJson(data, wfsName, this.wfsStatGebProperties, this.prefix);
-    let areaYearlyData = DataFormatUtils.filterDataByValues(wfsData, 'STATGEB', [String(stat.name)],       FilterTypeEnum.MATCHING);
+    let areaYearlyData = DataFormatUtils.filterDataByValues(wfsData, 'STATGEB', [String(stat.name)], FilterTypeEnum.MATCHING);
 
     const chartConfig: object = {
       'height': 480,
