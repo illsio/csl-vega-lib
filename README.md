@@ -13,7 +13,7 @@ Created 03.04.2019
 
 - NOTE: It is so far a showcase that is supposed to showcase how one library might be used in the CityScienceLab and in the context of the masterportal
 
-This could be a potential call to the Module from an Angular context:
+This could be a potential call from a an Angular FrontEnd to the Module (ChartCreatorService, DataRequestUtils):
 
 ```
     let rawData = null;
@@ -51,4 +51,12 @@ This could be a potential call to the Module from an Angular context:
 
     this.statisticalAreaTotals = ChartCreatorService.createChart('lineChart', dataForTotalsChart,
       chartConfig, null, lineConfigTotals);
+
+    this.view = new vega.View(vega.parse(spec))
+      .renderer('svg')  // set renderer (canvas or svg)
+      .initialize('#' + this.id)// initialize view within parent DOM container
+      .width(this.chartWidth)
+      .height(this.chartHeight)
+      .hover()             // enable hover encode set processing
+      .run();
   ```
