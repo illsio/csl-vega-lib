@@ -1,6 +1,8 @@
 export declare class DataRequestUtils {
-    baseNodes: string[];
-    getDataObservable(url: string): Promise<any>;
-    getPromise(data: any): Promise<{}>;
+    baseNodes: string[][];
+    getResponseData(url: string): Promise<any>;
+    convertToJson(data: any): Promise<{}>;
+    getDataFromGeoJson(wfsData: object[], wfsTypename: string, properties: string[], prefix: string): object[];
     getDataFromWFSJson(wfsData: object[], wfsTypename: string, properties: string[], prefix: string): object[];
+    private getFeatureNode;
 }

@@ -1,20 +1,18 @@
 import {FilterTypeEnum} from '../enums/filter-type.enum';
 
-// FIXME: A generic DataUtils class should be agnostic of the type of the data (such as "participation")
-
 export class DataFormatUtils {
 
-  //@Deprecated
+  //@Deprecated - works with Angular specific libraries that we want to avoid
   //This was the way to commmunicate Data/Filter changes from the dashboard-module to the embedded context
 
-/*
-  private _rawDataChangeEmitter = new BehaviorSubject<object[]>([]);
-  rawDataChangeEmitter$ = this._rawDataChangeEmitter.asObservable();
+  /*
+    private _rawDataChangeEmitter = new BehaviorSubject<object[]>([]);
+    rawDataChangeEmitter$ = this._rawDataChangeEmitter.asObservable();
 
 
-  private _selectFilterChangeEmitter = new BehaviorSubject<object[]>([]);
-  selectFilterChangeEmitter$ = this._selectFilterChangeEmitter.asObservable();
-*/
+    private _selectFilterChangeEmitter = new BehaviorSubject<object[]>([]);
+    selectFilterChangeEmitter$ = this._selectFilterChangeEmitter.asObservable();
+  */
 
   /*
   *   For the current data - the current filter restrictions
@@ -240,7 +238,7 @@ export class DataFormatUtils {
     if (value instanceof Array) {
       stringValue = value[0].name;
     } else if (typeof value === 'object') {
-      stringValue = value.name[0];
+      stringValue = value['name'][0];
     } else {
       stringValue = value.name;
     }

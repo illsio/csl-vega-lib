@@ -9,7 +9,20 @@ var AbstractChartEnity = /** @class */ (function () {
         this._colorScheme = "tableau20";
         this._countElementName = '';
         this._colorElementName = '';
+        this.fontSize = 15;
+        this.labelFont = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
     }
+    AbstractChartEnity.prototype.processChartConfig = function (chartConfig) {
+        if (chartConfig.hasOwnProperty("height")) {
+            this.height = chartConfig['height'];
+        }
+        if (chartConfig.hasOwnProperty("width")) {
+            this.width = chartConfig['width'];
+        }
+        if (chartConfig.hasOwnProperty("autosize")) {
+            this.autoSize = chartConfig['autosize'];
+        }
+    };
     AbstractChartEnity.prototype.createChart = function () {
     };
     Object.defineProperty(AbstractChartEnity.prototype, "shema", {

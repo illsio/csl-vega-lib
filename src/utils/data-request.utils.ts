@@ -1,4 +1,5 @@
 import * as xml2js from 'xml2js/lib/xml2js';
+import * as p from 'xml2js/lib/parser';
 
 export class DataRequestUtils {
 
@@ -8,12 +9,15 @@ export class DataRequestUtils {
 
 
   // The baseNodes are needed when no clean JSON is returned by the WFS
-  baseNodes = ['wfs:FeatureCollection', 'gml:featureMember'];
+  baseNodes = [
+    ['wfs:FeatureCollection', 'gml:featureMember'],
+    ['wfs:FeatureCollection', 'wfs:member']
+  ];
 
-  getDataObservable(url: string): Promise<any> {
+  getResponseData(url: string): Promise<any> {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest();
-      xhr.open( "GET", url);
+      xhr.open("GET", url);
       xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
           resolve(xhr.response);
@@ -33,21 +37,34 @@ export class DataRequestUtils {
     //   });
   }
 
-  public getPromise(data) {
+  public convertToJson(data) {
+    data = data.toString().replace("\ufeff", "");
+    data = data.toString('utf8');
     const parser = new xml2js.Parser();
     return new Promise((resolve, reject) => {
-      parser.parseString(data, function (err, result) {
+      p.parseString(data, {trim: true}, function (err, result) {
         resolve(result);
       });
     });
   }
 
-  public getDataFromWFSJson(wfsData: object[], wfsTypename: string, properties: string[], prefix: string): object[] {
-    let newWfs = wfsData;
-    for (const baseNodes of this.baseNodes) {
-      newWfs = newWfs[baseNodes];
+  public getDataFromGeoJson(wfsData: object[], wfsTypename: string, properties: string[], prefix: string): object[] {
+    const dataCollection: object[] = [];
+    let dataIndex = 0;
+    for (let feature of wfsData["features"]) {
+      let data = feature["properties"];
+      if (!data.hasOwnProperty('id')) {
+        data['id'] = dataIndex;
+      }
+      dataCollection.push(data);
+      dataIndex++;
     }
-    // At this point we should have an array of data elements
+    return dataCollection;
+  }
+
+  public getDataFromWFSJson(wfsData: object[], wfsTypename: string, properties: string[], prefix: string): object[] {
+    let newWfs = this.getFeatureNode(wfsData);
+
     const dataCollection: object[] = [];
     let dataIndex = 0;
     for (const dataElement of newWfs) {
@@ -69,4 +86,19 @@ export class DataRequestUtils {
 
     return dataCollection;
   }
+
+  private getFeatureNode(wfsData: object[]): object[] {
+    let newWfs = wfsData;
+    for (const baseNode of this.baseNodes) {
+      newWfs = wfsData
+      for (let node of baseNode) {
+        newWfs = newWfs[node];
+      }
+      if (newWfs && newWfs.hasOwnProperty("length")) {
+        return newWfs
+      }
+    }
+    return newWfs;
+  }
+
 }

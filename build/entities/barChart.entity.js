@@ -38,7 +38,7 @@ var BarchartEntity = /** @class */ (function (_super) {
                 "values": values
             }
         ];
-        if (this.countElementName) {
+        if (this.countElementName && this.countElementName.length > 0) {
             this.data[0]["transform"] =
                 [
                     {
@@ -73,7 +73,7 @@ var BarchartEntity = /** @class */ (function (_super) {
                 "name": "sort", "value": false
             },
             {
-                "name": "dings", "value": this.colorElementName
+                "name": "dings", "value": this.colorElementName.length > 0 ? this.colorElementName : null
             }
         ];
     };
@@ -93,7 +93,7 @@ var BarchartEntity = /** @class */ (function (_super) {
                 "from": { "data": "table" },
                 "encode": {
                     "enter": {
-                        "fill": { "scale": "color", "field": this.colorElementName },
+                        "fill": { "scale": "color", "field": this.colorElementName.length > 0 ? this.colorElementName : null },
                         "x": { "signal": "width / 2" },
                         "y": { "signal": "height / 2" },
                         "stroke": { "value": "#fff" },
@@ -106,7 +106,7 @@ var BarchartEntity = /** @class */ (function (_super) {
                         "cornerRadius": { "signal": "cornerRadius" }
                     },
                     "update": {
-                        "fill": { "scale": "color", "field": this.colorElementName },
+                        "fill": { "scale": "color", "field": this.colorElementName.length > 0 ? this.colorElementName : null },
                         "startAngle": { "field": "startAngle" },
                         "endAngle": { "field": "endAngle" }
                     },

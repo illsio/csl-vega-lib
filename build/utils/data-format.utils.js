@@ -1,16 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var filter_type_enum_1 = require("../enums/filter-type.enum");
-// FIXME: A generic DataUtils class should be agnostic of the type of the data (such as "participation")
 var DataFormatUtils = /** @class */ (function () {
     function DataFormatUtils() {
-        //@Deprecated
+        //@Deprecated - works with Angular specific libraries that we want to avoid
         //This was the way to commmunicate Data/Filter changes from the dashboard-module to the embedded context
         /*
           private _rawDataChangeEmitter = new BehaviorSubject<object[]>([]);
           rawDataChangeEmitter$ = this._rawDataChangeEmitter.asObservable();
-        
-        
+      
+      
           private _selectFilterChangeEmitter = new BehaviorSubject<object[]>([]);
           selectFilterChangeEmitter$ = this._selectFilterChangeEmitter.asObservable();
         */
@@ -222,7 +221,7 @@ var DataFormatUtils = /** @class */ (function () {
             stringValue = value[0].name;
         }
         else if (typeof value === 'object') {
-            stringValue = value.name[0];
+            stringValue = value['name'][0];
         }
         else {
             stringValue = value.name;

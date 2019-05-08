@@ -10,6 +10,21 @@ export class AbstractChartEnity {
   private _countElementName: string = '';
   private _colorElementName: string = '';
 
+  public fontSize = 15;
+  public labelFont = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+
+  public processChartConfig(chartConfig: object) {
+    if (chartConfig.hasOwnProperty("height")) {
+      this.height = chartConfig['height'];
+    }
+    if (chartConfig.hasOwnProperty("width")) {
+      this.width = chartConfig['width'];
+    }
+    if (chartConfig.hasOwnProperty("autosize")) {
+      this.autoSize = chartConfig['autosize'];
+    }
+  }
+
   public createChart() {
   }
 
