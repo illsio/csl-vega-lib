@@ -1,0 +1,14 @@
+INSERT INTO dash_alkis_merge (alkis_nr, flaeche, bezirk, "year", halb_nr)
+SELECT distinct 41007 as alkis_nr, (flaeche/5) as flaeche, bezirk, year, halb_nr from dash_alkis_halb_final where halb_nr = 290 and flaeche != 0 order by bezirk;
+
+INSERT INTO dash_alkis_merge (alkis_nr, flaeche, bezirk, "year", halb_nr)
+SELECT distinct 41009 as alkis_nr, (flaeche/5) as flaeche, bezirk, year, halb_nr from dash_alkis_halb_final where halb_nr = 290 and flaeche != 0 order by bezirk;
+
+INSERT INTO dash_alkis_merge (alkis_nr, flaeche, bezirk, "year", halb_nr)
+SELECT distinct 41006 as alkis_nr, (flaeche/5) as flaeche, bezirk, year, halb_nr from dash_alkis_halb_final where halb_nr = 290 and flaeche != 0 order by bezirk;
+
+INSERT INTO dash_alkis_merge (alkis_nr, flaeche, bezirk, "year", halb_nr)
+SELECT distinct 41001 as alkis_nr, (flaeche/5) as flaeche, bezirk, year, halb_nr from dash_alkis_halb_final where halb_nr = 290 and flaeche != 0 order by bezirk;
+
+INSERT INTO dash_alkis_merge (alkis_nr, flaeche, bezirk, "year", halb_nr)
+SELECT distinct 41002 as alkis_nr, (flaeche/5) as flaeche, bezirk, year, halb_nr from dash_alkis_halb_final where halb_nr = 290 and flaeche != 0 order by bezirk;

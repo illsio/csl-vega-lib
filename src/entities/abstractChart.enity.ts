@@ -1,94 +1,103 @@
 export class AbstractChartEnity {
 
-  private _shema = 'https://vega.github.io/schema/vega/v3.0.json';
-  private _width: number = 0;
-  private _height: number = 0;
-  private _autoSize = 'fit';
-  private _data: any;
-  private _colorScheme = "tableau20";
+    private _shema = 'https://vega.github.io/schema/vega/v3.0.json';
+    private _width: number = 0;
+    private _height: number = 0;
+    private _autoSize = 'fit';
+    private _data: any;
+    private _colorScheme = "tableau20";
 
-  private _countElementName: string = '';
-  private _colorElementName: string = '';
+    private _countElementName: string = '';
+    private _colorElementName: string = '';
+    private _dataElementName: string = '';
 
-  public fontSize = 15;
-  public labelFont = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+    public fontSize = 15;
+    public labelFont = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
-  public processChartConfig(chartConfig: object) {
-    if (chartConfig.hasOwnProperty("height")) {
-      this.height = chartConfig['height'];
+    public processChartConfig(chartConfig: object) {
+        if (chartConfig.hasOwnProperty("height")) {
+            this.height = chartConfig['height'];
+        }
+        if (chartConfig.hasOwnProperty("width")) {
+            this.width = chartConfig['width'];
+        }
+        if (chartConfig.hasOwnProperty("autosize")) {
+            this.autoSize = chartConfig['autosize'];
+        }
     }
-    if (chartConfig.hasOwnProperty("width")) {
-      this.width = chartConfig['width'];
+
+    public createChart() {
     }
-    if (chartConfig.hasOwnProperty("autosize")) {
-      this.autoSize = chartConfig['autosize'];
+
+    get shema(): string {
+        return this._shema;
     }
-  }
 
-  public createChart() {
-  }
+    set shema(value: string) {
+        this._shema = value;
+    }
 
-  get shema(): string {
-    return this._shema;
-  }
+    get width(): number {
+        return this._width;
+    }
 
-  set shema(value: string) {
-    this._shema = value;
-  }
+    set width(value: number) {
+        this._width = value;
+    }
 
-  get width(): number {
-    return this._width;
-  }
+    get height(): number {
+        return this._height;
+    }
 
-  set width(value: number) {
-    this._width = value;
-  }
+    set height(value: number) {
+        this._height = value;
+    }
 
-  get height(): number {
-    return this._height;
-  }
+    get autoSize(): string {
+        return this._autoSize;
+    }
 
-  set height(value: number) {
-    this._height = value;
-  }
+    set autoSize(value: string) {
+        this._autoSize = value;
+    }
 
-  get autoSize(): string {
-    return this._autoSize;
-  }
+    get data(): any {
+        return this._data;
+    }
 
-  set autoSize(value: string) {
-    this._autoSize = value;
-  }
+    set data(value: any) {
+        this._data = value;
+    }
 
-  get data(): any {
-    return this._data;
-  }
+    get countElementName(): string {
+        return this._countElementName;
+    }
 
-  set data(value: any) {
-    this._data = value;
-  }
+    set countElementName(value: string) {
+        this._countElementName = value;
+    }
 
-  get countElementName(): string {
-    return this._countElementName;
-  }
+    get colorElementName(): string {
+        return this._colorElementName;
+    }
 
-  set countElementName(value: string) {
-    this._countElementName = value;
-  }
+    set colorElementName(value: string) {
+        this._colorElementName = value;
+    }
 
-  get colorElementName(): string {
-    return this._colorElementName;
-  }
+    get dataElementName(): string {
+        return this._dataElementName;
+    }
 
-  set colorElementName(value: string) {
-    this._colorElementName = value;
-  }
+    set dataElementName(value: string) {
+        this._dataElementName = value;
+    }
 
-  get colorScheme(): string {
-    return this._colorScheme;
-  }
+    get colorScheme(): string {
+        return this._colorScheme;
+    }
 
-  set colorScheme(value: string) {
-    this._colorScheme = value;
-  }
+    set colorScheme(value: string) {
+        this._colorScheme = value;
+    }
 }

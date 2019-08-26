@@ -24,14 +24,25 @@ export class BarchartEntity extends AbstractChartEnity {
             }
         ];
 
-        if (this.countElementName && this.countElementName.length > 0) {
-            this.data[0].transform =  [
+        if (this.dataElementName && this.dataElementName.length > 0) {
+            this.data[0].transform = [
                 {
                     "type": "pie",
-                    "field": this.countElementName,
+                    "field": this.dataElementName,
                     "startAngle": {"signal": "startAngle"},
                     "endAngle": {"signal": "endAngle"},
                     "sort": {"signal": "sort"}
+                }
+            ];
+        } else if (this.countElementName && this.countElementName.length > 0) {
+            this.data[0].transform = [
+                {
+                    "type": "aggregate",
+                    "groupby": [this.countElementName]
+                },
+                {
+                    "type": "pie",
+                    "field": "count"
                 }
             ];
         }
@@ -99,56 +110,5 @@ export class BarchartEntity extends AbstractChartEnity {
             }
         ]
     }
-
-    // Marks from previous chart
-
-    /*{
-       "name": "mark",
-       "type": "arc",
-       "interactive": true,
-       "from": {"data": "table"},
-       "encode": {
-         "enter": {
-           "fill": {"scale": "color", "field": "assignee"},
-           "x": {"signal": "width / 2"},
-           "y": {"signal": "height / 2"}
-         },
-         "update": {
-           "tooltip": [
-             {
-               "test": "(selected.assignee === datum.assignee)",
-               "signal": "datum.ipcs + (datum.records ? ', ' + datum.records + ' records' : '')"
-             },
-             {"signal": "datum.assignee + (datum.records_total ? ', ' + datum.records_total + ' records' : '')"}
-           ],
-           "startAngle": {"field": "startAngle"},
-           "endAngle": {"field": "endAngle"},
-           "stroke": [
-             {"test": "(selected.assignee === datum.assignee)", "value": "white"},
-             {"scale": "color", "field": "assignee"}
-           ],
-           "strokeOpacity": [
-             {"test": "!selected && !hovered || (hovered.assignee===datum.assignee)", "value": 1.0},
-             {"value": 0.0}
-           ],
-           "padAngle": [
-             {"test": "(selected.assignee !== datum.assignee)", "value": 0.0},
-             {"value": 0.01}
-           ],
-           "innerRadius": {"signal": "width/4"},
-           "outerRadius": {"signal": "width / 2"},
-           "cornerRadius": {"value": 0},
-           "fill": [
-             {"scale": "color", "field": "assignee"}
-           ],
-           "fillOpacity": [
-             {"test": "(!hovered && !selected) || (hovered.assignee === datum.assignee)", "value": 1.0},
-             {"test": "(selected.assignee === datum.assignee)", "signal": "datum.records", "mult": 0.01},
-             {"value": 0.25}
-           ]
-         },
-         "hover": {}
-       }
-     }*/
 
 }
